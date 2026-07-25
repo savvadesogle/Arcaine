@@ -33,6 +33,7 @@ services:
     # --- Source + build artifacts -----------------------------------------
     volumes:
       - .:/workspace:cached          # edit on host, build in container
+      - ./models:/workspace/models   # model weights (download manually)
     working_dir: /workspace
     ports:
       - "7461:7461"
