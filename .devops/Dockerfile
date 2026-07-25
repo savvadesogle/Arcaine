@@ -13,7 +13,7 @@
 # The base still carries what we DO need: the DPC++/SYCL compiler (icx/icpx)
 # and oneMKL.
 
-ARG ONEAPI_VERSION=2025.3.3-0-devel-ubuntu24.04
+ARG ONEAPI_VERSION=2026.1.0-devel-ubuntu24.04
 
 # ==========================================================================
 # Stage 1: build oneDNN from source with SYCL CPU + GPU runtimes
@@ -22,11 +22,10 @@ FROM intel/deep-learning-essentials:${ONEAPI_VERSION} AS onednn-build
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Pin the oneDNN release. NOTE: confirm the current tag at
+# Pin the oneDNN release. Confirm the latest tag at:
 #   https://github.com/uxlfoundation/oneDNN/releases
-# (releases land roughly quarterly; v3.5 confirmed, 2026 releases scheduled
-# Feb/May/Aug). Bump this arg to the version you want.
-ARG ONEDNN_VERSION=v3.14
+# Bump this arg to the version you want.
+ARG ONEDNN_VERSION=v3.13
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         cmake ninja-build git ca-certificates \
